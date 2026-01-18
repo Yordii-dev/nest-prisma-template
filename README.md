@@ -1,51 +1,68 @@
-Nest Prisma Template
+# Nest Prisma Template
 
-Template base para iniciar proyectos con NestJS y Prisma.
+Template base para iniciar proyectos con **NestJS** y **Prisma 6.14.0**.
 
-USO DEL TEMPLATE
+---
 
-1. Crear repositorio desde el template  
-Usar la opción "Use this template" en GitHub.  
-Template: nest-prisma-template
+## 🚀 Uso del Template
 
-2. Abrir el proyecto  
-Entrar a la carpeta del repositorio creado.
+### 1️⃣ Crear repositorio desde el template
+- Usar la opción **Use this template** en GitHub  
+- Template: `nest-prisma-template`
 
-3. Configurar variables de entorno  
+---
 
-Archivo .env  
-Definir el puerto del proyecto.  
-PORT=4001
+### 2️⃣ Abrir el proyecto
+Ingresar a la carpeta del repositorio creado.
 
-Archivo .env.development  
-Definir el nombre de la base de datos.  
-DATABASE_URL=mysql://root:Yordii@localhost:3306/nombre_db
+---
 
-4. Inicializar el proyecto  
+### 3️⃣ Configurar variables de entorno
 
-Ejecutar el comando:  
-npm run init:project  
+#### Archivo `.env`
+Definir el puerto del proyecto:
+
+    PORT=4001
+
+#### Archivo `.env.development`
+Definir el nombre de la base de datos:
+
+    DATABASE_URL=mysql://root:Yordii@localhost:3306/nombre_db
+
+---
+
+### 4️⃣ Inicializar el proyecto
+Ejecutar:
+
+    npm run init:project
 
 Este comando:
 - Instala dependencias  
 - Ejecuta migraciones de Prisma  
 - Crea la base de datos si no existe  
 
-Prisma pedirá un nombre para la migración.
+Prisma pedirá un **nombre para la migración**.
 
-5. Iniciar el servidor  
+---
 
-Ejecutar:  
-npm run start:dev  
+### 5️⃣ Iniciar el servidor
+Ejecutar:
 
-PRUEBAS
+    npm run start:dev
 
-El template incluye una tabla de ejemplo llamada Role.
+---
 
-Probar el endpoint con GET:  
-http://localhost:4001/api/masters/all-roles
+## 🧪 Pruebas
 
-REQUISITOS
-- Node.js
-- MySql | PostgreSQL
-- npm | pnmp
+El template incluye una tabla de ejemplo llamada **Role**.
+
+Probar el endpoint:
+
+    GET http://localhost:4001/api/masters/all-roles
+
+---
+
+## ✅ Requisitos
+- Node.js  
+- MySQL | PostgreSQL  
+- npm | pnpm
