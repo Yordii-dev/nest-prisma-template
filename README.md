@@ -40,25 +40,15 @@ Este comando:
 - Instala dependencias  
 - Ejecuta migraciones de Prisma  
 - Crea la base de datos si no existe  
+- Levanta backend en puerto definido
 
 Prisma pedirá un **nombre para la migración**.
 
 ---
 
-### 5️⃣ Iniciar el servidor
-Ejecutar:
-
-    npm run start:dev
-
----
-
-## 🧪 Pruebas
-
-El template incluye una tabla de ejemplo llamada **Role**.
-
 Probar el endpoint:
 
-    GET http://localhost:4001/api/masters/all-roles
+    GET http://localhost:PORT/api/tests
 
 ---
 

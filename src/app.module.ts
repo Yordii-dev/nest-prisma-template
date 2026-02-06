@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ConfigModule } from '@nestjs/config';
-import { MastersModule } from './masters/masters.module';
+import { TestsModule } from './tests/tests.module';
 import { PrismaModule } from '@utils/prisma/prisma.module';
 import { AuthModule } from 'auth/auth.module';
 
@@ -15,12 +15,12 @@ import { AuthModule } from 'auth/auth.module';
       envFilePath: ['.env', `.env.${process.env.NODE_ENV}`],
     }),
     ScheduleModule.forRoot({}),
-    MastersModule,
+    TestsModule,
     PrismaModule,
 
     //APP MODULES
     AuthModule,
-    MastersModule,
+    TestsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
