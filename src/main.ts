@@ -2,7 +2,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
-import { JwtExceptionFilter } from '@utils/exceptions/Jwt-exception';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { corsConfig } from 'cors.config';
 import { dtoExceptions } from '@utils/exceptions/dto-exception';
@@ -27,7 +26,7 @@ async function bootstrap() {
     }),
   );
   app.enableCors(corsConfig);
-  app.useGlobalFilters(new JwtExceptionFilter(), new GlobalExceptionFilter());
+  app.useGlobalFilters(new GlobalExceptionFilter());
 
   app.useGlobalInterceptors(new ResponseInterceptor());
 
