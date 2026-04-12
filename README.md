@@ -12,12 +12,19 @@ Template base para iniciar proyectos con **NestJS** y **Prisma 6.14.0**.
 
 ---
 
-### 2️⃣ Abrir el proyecto
+### 2️⃣ Abrir el proyecto e iniciar Docker Engine
 Ingresar a la carpeta del repositorio creado.
+Abrir terminal e iniciar docker engine (Windows -> docker compose start)
 
 ---
 
-### 3️⃣ Configurar variables de entorno
+### 3️⃣ Configurar entorno
+
+#### Archivo `compose.dev.yml`
+Definir nombre del service de mysql:
+    
+    container_name: PROJECT_mysql_dev (reemplazar 'PROJECT')
+
 
 #### Archivo `.env`
 Definir el puerto del proyecto:
@@ -25,9 +32,14 @@ Definir el puerto del proyecto:
     PORT=4001
 
 #### Archivo `.env.development`
-Definir el nombre de la base de datos:
+Definir datos de la bd y la url db final:
 
-    DATABASE_URL=mysql://root:Yordii@localhost:3306/nombre_db
+    DATABASE_URL=mysql://nestjs:password@localhost:DB_PORT/PROJECT (reemplazar 'PROJECT', 'DB_PORT')
+
+#### Crear BD
+En terminal ejecutar:
+
+    docker compose -f .\compose.dev.yml --env-file .\.env.development up  -d 
 
 ---
 

@@ -3,9 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ConfigModule } from '@nestjs/config';
-import { TestsModule } from './tests/tests.module';
 import { PrismaModule } from '@utils/prisma/prisma.module';
-import { AuthModule } from 'auth/auth.module';
 
 @Module({
   imports: [
@@ -15,12 +13,9 @@ import { AuthModule } from 'auth/auth.module';
       envFilePath: ['.env', `.env.${process.env.NODE_ENV}`],
     }),
     ScheduleModule.forRoot({}),
-    TestsModule,
     PrismaModule,
 
     //APP MODULES
-    AuthModule,
-    TestsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
