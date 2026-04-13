@@ -20,21 +20,21 @@ Abrir terminal e iniciar docker engine (Windows -> docker compose start)
 
 ### 3️⃣ Configurar entorno
 
-#### Archivo `compose.dev.yml`
-Definir nombre del service de mysql:
+#### Archivo `compose.dev.yml, compose.prod.yml, .env.development, .env.production, get_envs_from_ec2.ps1, send_envs_to_ec2.ps1, .github/workflows/deploy.yml`
+Reemplazar 'PROJECT', 'DB_PORT', 'PORT_FOR_SSH_TUNEL', 'HOST_IP' por valores corectos:
     
     container_name: PROJECT_mysql_dev (reemplazar 'PROJECT')
+    DATABASE_URL=mysql://nestjs:password@localhost:DB_PORT/PROJECT (reemplazar 'PROJECT', 'DB_PORT')
+    ...
+    ...
 
+Agregar 3 variables al repositorio github para el workflow gh
 
 #### Archivo `.env`
 Definir el puerto del proyecto:
 
     PORT=4001
 
-#### Archivo `.env.development`
-Definir datos de la bd y la url db final:
-
-    DATABASE_URL=mysql://nestjs:password@localhost:DB_PORT/PROJECT (reemplazar 'PROJECT', 'DB_PORT')
 
 #### Crear BD
 En terminal ejecutar:

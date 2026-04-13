@@ -1,0 +1,1 @@
+scp ubuntu@HOST_IP:/home/ubuntu/micro_api_PROJECT/.env* .

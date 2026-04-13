@@ -1,0 +1,77 @@
+services:
+  PROJECT-api:
+  #No para PROD, build + compose up por separado
+    # build: #Solo se ejecuta con docker compose ... --build
+    #   context: .
+    #   dockerfile: Dockerfile.prod
+    image: yordii/micro-PROJECT-api:${IMAGE_TAG}
+    container_name: PROJECT_api_prod
+    restart: unless-stopped #Para resiliencia
+
+
+    # Solo para Docker swarm
+    # deploy:
+    #   restart_policy:
+    #     condition: on-failure
+    #     delay: 5s
+    #     max-attempts: 3
+    #     window: 120s
+    env_file:
+      - .env.production
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${PORT}/api"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    networks:
+      - lotiza-prod
+
+  mysql:
+    image: mysql:8.0 
+    container_name: PROJECT_mysql_prod
+    restart: unless-stopped
+    
+    #Solo .env para interpolacion de variables, por eso se pasa por cli el .env.production, --env-file es solo para interpolar vars, no para inyectar en container
+    env_file:
+      - .env.production
+    ports:
+      - "${DB_ADDRESS}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+ 
+    volumes:
+      - mysql_data_prod:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d #Solo si el volumne no existe, para inicializar la DB 
+
+    # Para que no se coma memoria y no se active OOM KILLER de Linux
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+
+        reservations:
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u${DB_USERNAME}", "-p${DB_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - lotiza-prod
+
+volumes:
+  mysql_data_prod:
+ 
+networks:
+  lotiza-prod:
+    driver: bridge
