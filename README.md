@@ -70,6 +70,8 @@ Probar el endpoint:
 
     GET http://localhost:PORT/api/tests
 
+Nota: En cada push usar 
+    git:push
 ---
 
 ## ✅ Requisitos
