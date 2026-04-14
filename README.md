@@ -35,6 +35,9 @@ Agregar 3 variables al repositorio github para el workflow gh y 2 de DOCKER
     DOCKERHUB_TOKEN -> tkn
     DOCKERHUB_USER -> yordii
 
+Omitir seguimiento de archivos env en gitignore
+    .env* (Se usara los .ps1)
+
 #### Archivo `.env`
 Definir el puerto del proyecto:
 
