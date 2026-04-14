@@ -29,6 +29,7 @@ Reemplazar 'PROJECT', 'DB_PORT', 'PORT_FOR_SSH_TUNEL', 'HOST_IP' por valores cor
     ...
 
 Agregar 3 variables al repositorio github para el workflow gh
+Agregar valor de token docker para el despliege pipeline: DOCKER_TOKEN
 
 #### Archivo `.env`
 Definir el puerto del proyecto:
